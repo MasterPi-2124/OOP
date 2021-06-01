@@ -8,7 +8,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
-
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -29,8 +28,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.w3c.dom.Text;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -146,7 +143,7 @@ public class DrawSceneController extends OutputStream implements Initializable {
             ImageIO.write(renderedImage, "png", file);
             System.out.println("Exported to PNG successfully!\nDirectory: " + file.getAbsolutePath());
         } else {
-            System.out.println("Ngu loz a, ko co gi ma doi di xuat anh???");
+            System.out.println("Can not save to PNG when the graph is null.");
         }
     }
 
@@ -158,6 +155,7 @@ public class DrawSceneController extends OutputStream implements Initializable {
 
         File file = fileChooser.showSaveDialog(stage);
         PrintWriter outFile = null;
+
         try {
             outFile = new PrintWriter(file);
         } catch (Exception e) {
@@ -491,7 +489,7 @@ public class DrawSceneController extends OutputStream implements Initializable {
             delete.setDisable(false);
             Movable.setDisable(false);
         } else {
-            System.out.println("con chua chay thi pause kieu loz gi?");
+            System.out.println("You must choose start before stop.");
         }
 
     }
@@ -630,6 +628,7 @@ public class DrawSceneController extends OutputStream implements Initializable {
             try {
                 load(MainSceneController.filePath);
                 System.out.println("Loading file " + MainSceneController.filePath + " ...");
+                MainSceneController.filePath = null;
             } catch (FileNotFoundException | InterruptedException e) {
                 e.printStackTrace();
             }
