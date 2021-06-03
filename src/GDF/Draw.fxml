@@ -270,15 +270,15 @@
                             </Menu>
                             <Menu mnemonicParsing="false" style="-fx-background-color: #282b3c;" text="Edit">
                               <items>
-                                <MenuItem mnemonicParsing="false" text="Delete" />
+                                <MenuItem mnemonicParsing="false" onAction="#delete" text="Delete" />
                                     <MenuItem mnemonicParsing="false" text="Find" />
                                     <MenuItem mnemonicParsing="false" text="Sort" />
                               </items>
                             </Menu>
                             <Menu mnemonicParsing="false" style="-fx-background-color: #282b3c;" text="View">
                               <items>
-                                <MenuItem mnemonicParsing="false" text="Zoom In" />
-                                    <MenuItem mnemonicParsing="false" text="Zoom Out" />
+                                <MenuItem mnemonicParsing="false" onAction="#zoomIn" text="Zoom In" />
+                                    <MenuItem mnemonicParsing="false" onAction="#zoomOut" text="Zoom Out" />
                                     <CheckMenuItem mnemonicParsing="false" onAction="#hidePropertyBar" selected="true" text="Property" />
                                     <CheckMenuItem mnemonicParsing="false" text="Log" />
                               </items>

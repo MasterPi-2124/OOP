@@ -75,8 +75,9 @@ public class DrawSceneController extends OutputStream implements Initializable {
                     canAddEdge = false,
                     isMovable = false,
                     isRunning = false,
-                    isPaused = false;
+                    isDragged = false;
     int id = 1;
+    double k = 1;
     Vertex v1,v2;
     String path;
 
@@ -171,6 +172,36 @@ public class DrawSceneController extends OutputStream implements Initializable {
         }
         System.out.println("Exported to GPH successfully!\nDirectory: " + file.getAbsolutePath());
         outFile.close();
+    }
+
+    public void zoomIn() {
+        double centerX = graph.getVertexList().get(0).GetShape().getLayoutX() / 2.0 + graph.getVertexList().get(graph.getVertexList().size() / 2).GetShape().getLayoutX() / 2.0;
+        double centerY = graph.getVertexList().get(0).GetShape().getLayoutY() / 2.0 + graph.getVertexList().get(graph.getVertexList().size() / 2).GetShape().getLayoutY() / 2.0;
+
+        this.k *= 1.2;
+
+        for(int i = 0; i < graph.getVertexList().size(); i++) {
+            graph.getVertexList().get(i).GetShape().setLayoutX(centerX + k * (graph.getVertexList().get(i).GetShape().getLayoutX() - centerX));
+            graph.getVertexList().get(i).GetShape().setLayoutY(centerY + k * (graph.getVertexList().get(i).GetShape().getLayoutY() - centerY));
+            graph.getVertexList().get(i).GetShape().setPrefSize(50, 50);
+        }
+
+    }
+
+    public void zoomOut() {
+        double centerX = graph.getVertexList().get(0).GetShape().getLayoutX() / 2.0 + graph.getVertexList().get(graph.getVertexList().size() / 2).GetShape().getLayoutX() / 2.0;
+        double centerY = graph.getVertexList().get(0).GetShape().getLayoutY() / 2.0 + graph.getVertexList().get(graph.getVertexList().size() / 2).GetShape().getLayoutY() / 2.0;
+
+        for(int i = 0; i < graph.getVertexList().size(); i++) {
+            graph.getVertexList().get(i).GetShape().setLayoutX(centerX + (graph.getVertexList().get(i).GetShape().getLayoutX() - centerX) / k);
+            graph.getVertexList().get(i).GetShape().setLayoutY(centerY + (graph.getVertexList().get(i).GetShape().getLayoutY() - centerY) / k);
+            graph.getVertexList().get(i).GetShape().setPrefSize(50 / k, 50 / k);
+        }
+
+        if(this.k / 1.2 > 1) {
+            this.k /= 1.2;
+        }
+
     }
 
     public void toHelpAndAbout() throws IOException {
@@ -313,7 +344,7 @@ public class DrawSceneController extends OutputStream implements Initializable {
                     adjacentMatrix.getChildren().add(data.get(i).get(j));
                 } else if (i == j) {
                     data.get(i).get(j).getStyleClass().setAll("cell-even");
-                    data.get(i).get(j).setText("0");
+                    data.get(i).get(j).setText("-");
                     data.get(i).get(j).setEditable(false);
                     adjacentMatrix.setRowIndex(data.get(i).get(j),j + 1);
                     adjacentMatrix.setColumnIndex(data.get(i).get(j),i + 1);
@@ -324,7 +355,7 @@ public class DrawSceneController extends OutputStream implements Initializable {
                     } else {
                         data.get(i).get(j).getStyleClass().setAll("cell-odd");
                     }
-                    data.get(i).get(j).setText("-1");
+                    data.get(i).get(j).setText("-");
                     data.get(i).get(j).setEditable(false);
                     adjacentMatrix.setRowIndex(data.get(i).get(j),j + 1);
                     adjacentMatrix.setColumnIndex(data.get(i).get(j),i + 1);
@@ -407,6 +438,8 @@ public class DrawSceneController extends OutputStream implements Initializable {
                         addVertex.setDisable(true);
                         delete.setDisable(true);
                         Movable.setDisable(true);
+                        canAddEdge = false;
+                        canAddVertex = false;
 
                         algo.runBFS(startPoint.getValue());
 
@@ -419,6 +452,9 @@ public class DrawSceneController extends OutputStream implements Initializable {
                         addEdge.setDisable(false);
                         addVertex.setDisable(false);
                         delete.setDisable(false);
+                        Movable.setDisable(false);
+                        canAddEdge = true;
+                        canAddVertex = true;
                     }
                 } else if (startPoint.getValue() == null) {
                     System.out.println("Running BFS failed because no start point is chosen.");
@@ -435,9 +471,11 @@ public class DrawSceneController extends OutputStream implements Initializable {
                         addEdge.setDisable(true);
                         addVertex.setDisable(true);
                         delete.setDisable(true);
+                        Movable.setDisable(true);
+                        canAddEdge = false;
+                        canAddVertex = false;
 
                         algo.runDFS(startPoint.getValue());
-
                     } catch (Exception e) {
                         System.out.println("Running DFS failed: " + e.getMessage());
                         isRunning = false;
@@ -447,6 +485,9 @@ public class DrawSceneController extends OutputStream implements Initializable {
                         addEdge.setDisable(false);
                         addVertex.setDisable(false);
                         delete.setDisable(false);
+                        Movable.setDisable(false);
+                        canAddEdge = true;
+                        canAddVertex = true;
                     }
                 } else if (startPoint.getValue() == null) {
                     System.out.println("Running DFS failed because no start point is chosen.");
@@ -573,8 +614,17 @@ public class DrawSceneController extends OutputStream implements Initializable {
 
     public void onVertexDragged(MouseEvent event, Vertex v) {
         if (event.isPrimaryButtonDown() && !canAddEdge) {
-            v.GetShape().setLayoutX(v.GetShape().getLayoutX() + event.getX() + v.GetShape().getTranslateX());
-            v.GetShape().setLayoutY(v.GetShape().getLayoutY() + event.getY() + v.GetShape().getTranslateY());
+            if(!isMovable) {
+                v.GetShape().setLayoutX(v.GetShape().getLayoutX() + event.getX() + v.GetShape().getTranslateX());
+                v.GetShape().setLayoutY(v.GetShape().getLayoutY() + event.getY() + v.GetShape().getTranslateY());
+            } else {
+                for (Vertex v1 : graph.getVertexList()) {
+                    v1.GetShape().setLayoutX(v1.GetShape().getLayoutX() + event.getX() + v1.GetShape().getTranslateX());
+                    v1.GetShape().setLayoutY(v1.GetShape().getLayoutY() + event.getY() + v1.GetShape().getTranslateY());
+                }
+                //displayPane.setLayoutX(displayPane.getLayoutX() + event.getX() + displayPane.getTranslateX());
+                //displayPane.setLayoutY(displayPane.getLayoutY() + event.getY() + displayPane.getTranslateY());
+            }
         }
     }
 

@@ -44,7 +44,7 @@ public class MainSceneController implements Initializable {
         popup.initModality(Modality.APPLICATION_MODAL);
         popup.setTitle("Save as");
         Parent root = FXMLLoader.load(getClass().getResource("About.fxml"));
-        Scene scene = new Scene(root, 1000, 600);
+        Scene scene = new Scene(root, 1037, 597);
         popup.setScene(scene);
         popup.show();
     }
@@ -63,8 +63,8 @@ public class MainSceneController implements Initializable {
 
     public void openRandom(MouseEvent event) throws IOException {
         int randomNumber = -1;
-        while(randomNumber <= 0 || randomNumber > 6) {
-            randomNumber = (int)(Math.random()*6 + 1);
+        while(randomNumber <= 0 || randomNumber > 11) {
+            randomNumber = (int)(Math.random()*11 + 1);
         }
         filePath = "src/inputLucky/" + randomNumber + ".gph";
         toDraw(event);

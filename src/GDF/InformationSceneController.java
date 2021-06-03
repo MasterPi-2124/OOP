@@ -59,22 +59,32 @@ public class InformationSceneController implements Initializable {
 			if(line.startsWith("# ")) {
 				line = line.substring(2);
 				modifiedText += "<h1>" + line + "</h1> \n";
+				modifiedText += "<hr /> \n";
 			} else if(line.startsWith("## ")) {
 				line = line.substring(3);
 				modifiedText += "<h2>" + line + "</h2> \n";
+				modifiedText += "<hr /> \n";
 			} else if(line.startsWith("### ")) {
 				line = line.substring(4);
 				modifiedText += "<h3>" + line + "</h3> \n";
+			} else if(line.startsWith("#### ")) {
+				line = line.substring(5);
+				modifiedText += "<h4>" + line + "</h4> \n";
+			} else if(line.startsWith("##### ")) {
+				line = line.substring(6);
+				modifiedText += "<h5>" + line + "</h5> \n";
+			} else if(line.startsWith("###### ")) {
+				line = line.substring(7);
+				modifiedText += "<h6>" + line + "</h6> \n";
 			} else if(line.startsWith("---")) {
 				modifiedText += "<hr /> \n";
 			} else {
 				modifiedText += line + "<br /> \n";
 			}
 		}
-    	System.out.println(modifiedText);
-
-    	String [] symbols = {"**", "``", "--", "~~"};
-    	String [] tagNames = {"b", "i", "u", "s"};
+		System.out.println(modifiedText);
+    	String [] symbols = {"***", "///", "---", "~~~", ">>>", "```"};
+    	String [] tagNames = {"b", "i", "u", "s", "q", "code"};
     	for(int i = 0; i <symbols.length; i++) {
     		String symbol = symbols[i];
     		String tagName = tagNames[i];
@@ -85,7 +95,7 @@ public class InformationSceneController implements Initializable {
 				String beforeSymbol =
 						modifiedText.substring(0, index);
 				String afterSymbol =
-						modifiedText.substring(index + 2);
+						modifiedText.substring(index + 3);
 
 				String tag;
 				if(tagStart) {
@@ -123,16 +133,8 @@ public class InformationSceneController implements Initializable {
 
     }
 
-	public WebView getMarkdownAbout() {
-		return markdownAbout;
-	}
-
 	public void setMarkdownAbout(WebView markdownAbout) {
 		this.markdownAbout = markdownAbout;
-	}
-
-	public WebView getMarkdownHelp() {
-		return markdownHelp;
 	}
 
 	public void setMarkdownHelp(WebView markdownHelp) {
