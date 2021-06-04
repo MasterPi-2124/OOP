@@ -272,7 +272,7 @@
                               <items>
                                 <MenuItem mnemonicParsing="false" onAction="#delete" text="Delete" />
                                     <MenuItem mnemonicParsing="false" text="Find" />
-                                    <MenuItem mnemonicParsing="false" text="Sort" />
+                                    <MenuItem mnemonicParsing="false" onAction="#setShapeGraph" text="Sort" />
                               </items>
                             </Menu>
                             <Menu mnemonicParsing="false" style="-fx-background-color: #282b3c;" text="View">

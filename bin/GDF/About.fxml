@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<Pane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GDF.InformationSceneController">
+   <children>
+      <TabPane stylesheets="@design.css" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="                                          Help">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="392.0" prefWidth="308.0">
+                     <children>
+                        <Label layoutX="321.0" layoutY="37.0" text="Documentation" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Lato Black" size="50.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="364.0" layoutY="100.0" text="Tell you how to be a superhero" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Lato Thin" size="20.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="helpTextArea" layoutX="207.0" layoutY="235.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" prefHeight="10.0" prefWidth="10.0" />
+                        <WebView fx:id="markdownHelp" layoutX="12.0" layoutY="142.0" prefHeight="378.0" prefWidth="1023.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="                                       About">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="542.0" prefWidth="1043.0">
+                     <children>
+                        <Label layoutX="292.0" layoutY="38.0" text="Graph Path Finder" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Lato Black" size="50.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="301.0" layoutY="103.0" text="A graph simulator that makes the world better" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Lato Thin" size="20.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="aboutTextArea" layoutX="180.0" layoutY="173.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" opacity="0.0" prefHeight="10.0" prefWidth="10.0" />
+                        <WebView fx:id="markdownAbout" layoutX="44.0" layoutY="173.0" prefHeight="378.0" prefWidth="1023.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</Pane>

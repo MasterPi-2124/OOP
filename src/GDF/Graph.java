@@ -10,6 +10,8 @@ public class Graph {
     private ArrayList<Vertex> vertexList;
     private ArrayList<Edge> edgeList;
 
+    double k = 1.2;
+
 
     // constructor
     public Graph(Pane displayPane, int n) {

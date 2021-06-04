@@ -204,6 +204,118 @@ public class DrawSceneController extends OutputStream implements Initializable {
 
     }
 
+    // set shape of graph
+    public void setShapeGraph() {
+        int s = graph.getVertexList().size();
+        if(s % 4 == 0) {
+
+            graph.getVertexList().get(0).GetShape().setLayoutX(200);
+            graph.getVertexList().get(s / 4).GetShape().setLayoutX(1100);
+            graph.getVertexList().get(s / 4 * 2).GetShape().setLayoutX(1100);
+            graph.getVertexList().get(s / 4 * 3).GetShape().setLayoutX(200);
+
+            graph.getVertexList().get(0).GetShape().setLayoutY(100);
+            graph.getVertexList().get(s / 4).GetShape().setLayoutY(100);
+            graph.getVertexList().get(s / 4 * 2).GetShape().setLayoutY(500);
+            graph.getVertexList().get(s / 4 * 3).GetShape().setLayoutY(500);
+
+            for(int i = 0; i < graph.getVertexList().size(); i++) {
+                if(0 < i && i < s / 4) {
+                    double left = 0;
+                    double x1 = graph.getVertexList().get(0).GetShape().getLayoutX();
+                    double y1 = graph.getVertexList().get(0).GetShape().getLayoutY();
+                    double x2 = graph.getVertexList().get(s / 4).GetShape().getLayoutX();
+                    double y2 = graph.getVertexList().get(s / 4).GetShape().getLayoutY();
+                    graph.getVertexList().get(i).GetShape().setLayoutX(x1 + (x2 - x1) * (i - left) / (s / 4) );
+                    graph.getVertexList().get(i).GetShape().setLayoutY(y1 + (y2 - y1) * (i - left) / (s / 4) );
+                }
+                if(s / 4 < i && i < s / 4 * 2) {
+                    int left = s / 4;
+                    double x1 = graph.getVertexList().get(s / 4).GetShape().getLayoutX();
+                    double y1 = graph.getVertexList().get(s / 4).GetShape().getLayoutY();
+                    double x2 = graph.getVertexList().get(s / 2).GetShape().getLayoutX();
+                    double y2 = graph.getVertexList().get(s / 2).GetShape().getLayoutY();
+                    graph.getVertexList().get(i).GetShape().setLayoutX(x1 + (x2 - x1) * (i - left) / (s / 4) );
+                    graph.getVertexList().get(i).GetShape().setLayoutY(y1 + (y2 - y1) * (i - left) / (s / 4) );
+                }
+                if(s / 4 * 2 < i && i < s / 4 * 3) {
+                    int left = s / 4 * 2;
+                    double x1 = graph.getVertexList().get(s / 2).GetShape().getLayoutX();
+                    double y1 = graph.getVertexList().get(s / 2).GetShape().getLayoutY();
+                    double x2 = graph.getVertexList().get(s / 4 * 3).GetShape().getLayoutX();
+                    double y2 = graph.getVertexList().get(s / 4 * 3).GetShape().getLayoutY();
+                    graph.getVertexList().get(i).GetShape().setLayoutX(x1 + (x2 - x1) * (i - left) / (s / 4) );
+                    graph.getVertexList().get(i).GetShape().setLayoutY(y1 + (y2 - y1) * (i - left) / (s / 4) );
+                }
+                if(s / 4 * 3 < i && i < s) {
+                    int left = s / 4 * 3 ;
+                    double x1 = graph.getVertexList().get(s / 4 * 3).GetShape().getLayoutX();
+                    double y1 = graph.getVertexList().get(s / 4 * 3).GetShape().getLayoutY();
+                    double x2 = graph.getVertexList().get(0).GetShape().getLayoutX();
+                    double y2 = graph.getVertexList().get(0).GetShape().getLayoutY();
+                    graph.getVertexList().get(i).GetShape().setLayoutX(x1 + (x2 - x1) * (i - left) / (s / 4) );
+                    graph.getVertexList().get(i).GetShape().setLayoutY(y1 + (y2 - y1) * (i - left) / (s / 4) );
+                }
+            }
+        } else if(s % 3 == 0) {
+
+            graph.getVertexList().get(0).GetShape().setLayoutX(650);
+            graph.getVertexList().get(s / 3).GetShape().setLayoutX(900);
+            graph.getVertexList().get(s / 3 * 2).GetShape().setLayoutX(400);
+
+            graph.getVertexList().get(0).GetShape().setLayoutY(100);
+            graph.getVertexList().get(s / 3).GetShape().setLayoutY(450);
+            graph.getVertexList().get(s / 3 * 2).GetShape().setLayoutY(450);
+
+            for(int i = 0; i < graph.getVertexList().size(); i++) {
+                if(0 < i && i < s / 3) {
+                    double left = 0;
+                    double x1 = graph.getVertexList().get(0).GetShape().getLayoutX();
+                    double y1 = graph.getVertexList().get(0).GetShape().getLayoutY();
+                    double x2 = graph.getVertexList().get(s / 3).GetShape().getLayoutX();
+                    double y2 = graph.getVertexList().get(s / 3).GetShape().getLayoutY();
+                    graph.getVertexList().get(i).GetShape().setLayoutX(x1 + (x2 - x1) * (i - left) / (s / 3) );
+                    graph.getVertexList().get(i).GetShape().setLayoutY(y1 + (y2 - y1) * (i - left) / (s / 3) );
+                }
+                if(s / 3 < i && i < s / 3 * 2) {
+                    int left = s / 3;
+                    double x1 = graph.getVertexList().get(s / 3).GetShape().getLayoutX();
+                    double y1 = graph.getVertexList().get(s / 3).GetShape().getLayoutY();
+                    double x2 = graph.getVertexList().get(s / 3 * 2).GetShape().getLayoutX();
+                    double y2 = graph.getVertexList().get(s / 3 * 2).GetShape().getLayoutY();
+                    graph.getVertexList().get(i).GetShape().setLayoutX(x1 + (x2 - x1) * (i - left) / (s / 3) );
+                    graph.getVertexList().get(i).GetShape().setLayoutY(y1 + (y2 - y1) * (i - left) / (s / 3) );
+                }
+                if(s / 3 * 2 < i && i < s) {
+                    int left = s / 3 * 2;
+                    double x1 = graph.getVertexList().get(s / 3 * 2).GetShape().getLayoutX();
+                    double y1 = graph.getVertexList().get(s / 3 * 2).GetShape().getLayoutY();
+                    double x2 = graph.getVertexList().get(0).GetShape().getLayoutX();
+                    double y2 = graph.getVertexList().get(0).GetShape().getLayoutY();
+                    graph.getVertexList().get(i).GetShape().setLayoutX(x1 + (x2 - x1) * (i - left) / (s / 3) );
+                    graph.getVertexList().get(i).GetShape().setLayoutY(y1 + (y2 - y1) * (i - left) / (s / 3) );
+                }
+            }
+        } else {
+            double phi = 360 / s;
+            for(int i = 0; i < graph.getVertexList().size();i ++) {
+                if(i * phi <= 90) {
+                    graph.getVertexList().get(i).GetShape().setLayoutX(200 * Math.sin(i * phi / 180 * Math.PI) + 650);
+                    graph.getVertexList().get(i).GetShape().setLayoutY(- 200 * Math.cos(i * phi / 180 * Math.PI) + 300);
+                } if(phi * i > 90 && phi * i <= 180) {
+                    graph.getVertexList().get(i).GetShape().setLayoutX(200 * Math.sin((180 - i * phi) / 180 * Math.PI) + 650);
+                    graph.getVertexList().get(i).GetShape().setLayoutY(200 * Math.cos((180 - i * phi) / 180 * Math.PI) + 300);
+                } if(phi * i > 180 && phi * i <= 270) {
+                    graph.getVertexList().get(i).GetShape().setLayoutX(- 200 * Math.sin((i * phi - 180)/ 180 * Math.PI) + 650);
+                    graph.getVertexList().get(i).GetShape().setLayoutY(200 * Math.cos((i * phi - 180) / 180 * Math.PI) + 300);
+                } if(phi * i > 270 && phi * i <= 360) {
+                    graph.getVertexList().get(i).GetShape().setLayoutX(- 200 * Math.sin((360 - i * phi) / 180 * Math.PI) + 650);
+                    graph.getVertexList().get(i).GetShape().setLayoutY(- 200 * Math.cos((360 - i * phi) / 180 * Math.PI) + 300);
+                }
+            }
+        }
+    }
+
     public void toHelpAndAbout() throws IOException {
         Stage popup_stage = new Stage();
         popup_stage.initModality(Modality.APPLICATION_MODAL);
