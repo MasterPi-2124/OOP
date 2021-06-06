@@ -1,4 +1,4 @@
-package GDF;
+package GDF.algorithms;
 
 import java.util.ArrayList;
 

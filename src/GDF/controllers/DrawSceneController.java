@@ -31,8 +31,8 @@ import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import GDF.AllPath;
-import GDF.DFS_BFS;
+import GDF.algorithms.AllPath;
+import GDF.algorithms.DFS_BFS;
 import GDF.models.Edge;
 import GDF.models.Graph;
 import GDF.models.Vertex;

@@ -1,4 +1,4 @@
-package GDF;
+package GDF.algorithms;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
