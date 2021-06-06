@@ -1,4 +1,4 @@
-package GDF;
+package GDF.controllers;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,7 +32,7 @@ public class MainSceneController implements Initializable {
     }
 
     public void toDraw(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Draw.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GDF/views/Draw.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -43,7 +43,7 @@ public class MainSceneController implements Initializable {
         Stage popup = new Stage();
         popup.initModality(Modality.APPLICATION_MODAL);
         popup.setTitle("Save as");
-        Parent root = FXMLLoader.load(getClass().getResource("About.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GDF/views/About.fxml"));
         Scene scene = new Scene(root, 1037, 597);
         popup.setScene(scene);
         popup.show();

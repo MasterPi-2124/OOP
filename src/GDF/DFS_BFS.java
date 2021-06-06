@@ -9,6 +9,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
+import GDF.models.Graph;
+import GDF.models.Vertex;
+
 public class DFS_BFS {
 
     private Graph graph;
@@ -116,7 +119,7 @@ public class DFS_BFS {
         visualizer.play();
     }
 
-    void stop() {
+    public void stop() {
         graph.setDisable(false);
         graph.reset();
         visualizer.stop();

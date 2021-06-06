@@ -1,4 +1,4 @@
-package GDF;
+package GDF.controllers;
 
 import java.awt.image.RenderedImage;
 import java.io.*;
@@ -30,6 +30,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import GDF.AllPath;
+import GDF.DFS_BFS;
+import GDF.models.Edge;
+import GDF.models.Graph;
+import GDF.models.Vertex;
 
 public class DrawSceneController extends OutputStream implements Initializable {
 
@@ -84,7 +90,7 @@ public class DrawSceneController extends OutputStream implements Initializable {
     //Configuration for Menu bar
     public void toMain(MouseEvent event) throws IOException {
         System.out.println("Redirecting to Main ...");
-        Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GDF/views/Main.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -320,7 +326,7 @@ public class DrawSceneController extends OutputStream implements Initializable {
         Stage popup_stage = new Stage();
         popup_stage.initModality(Modality.APPLICATION_MODAL);
         popup_stage.setTitle("Save as");
-        Parent root = FXMLLoader.load(getClass().getResource("About.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/GDF/views/About.fxml"));
         Scene scene = new Scene(root, 1000, 600);
         popup_stage.setScene(scene);
         popup_stage.show();

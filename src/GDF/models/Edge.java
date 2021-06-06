@@ -1,4 +1,4 @@
-package GDF;
+package GDF.models;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
