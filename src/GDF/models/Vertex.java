@@ -1,4 +1,4 @@
-package GDF;
+package GDF.models;
 
 import java.util.ArrayList;
 import javafx.scene.control.Button;
@@ -39,13 +39,13 @@ public class Vertex extends Button {
         return shape;
     }
 
-    int getID() {
+    public int getID() {
         return this.ID;
     }
     void setID(int iD) {
         this.ID = iD;
     }
-    ArrayList<Vertex> getAdjacentVertices() {
+    public ArrayList<Vertex> getAdjacentVertices() {
         return adjacentVertices;
     }
 

@@ -1,6 +1,9 @@
-package GDF;
+package GDF.algorithms;
 
 import java.util.ArrayList;
+
+import GDF.models.Graph;
+import GDF.models.Vertex;
 
 public class AllPath {
     public AllPath(Graph graph) {

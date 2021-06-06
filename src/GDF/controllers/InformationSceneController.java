@@ -1,5 +1,5 @@
 
-package GDF;
+package GDF.controllers;
 
 import java.net.URL;
 import java.util.*;

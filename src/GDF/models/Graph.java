@@ -1,6 +1,7 @@
-package GDF;
+package GDF.models;
 
 import java.util.ArrayList;
+
 import javafx.scene.layout.Pane;
 
 public class Graph {
@@ -44,7 +45,7 @@ public class Graph {
     }
 
     //Create Edge
-    void createEdge(Vertex u, Vertex v) {
+    public void createEdge(Vertex u, Vertex v) {
         Edge line = new Edge(u.getLayoutX(), u.getLayoutY(), v.getLayoutX(), v.getLayoutY());
         line.x1Property().bind(u.GetShape().layoutXProperty());
         line.y1Property().bind(u.GetShape().layoutYProperty());
@@ -59,7 +60,7 @@ public class Graph {
         displayPane.getChildren().add(line);
     }
 
-    void createEdge(int u, int v) {
+    public void createEdge(int u, int v) {
         Vertex t1 = null,
                t2 = null;
         for (Vertex i : vertexList) {

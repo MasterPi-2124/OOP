@@ -45,7 +45,8 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="parent" stylesheets="@design.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GDF.MainSceneController">
+
+<HBox fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="parent" stylesheets="@design.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GDF.controllers.MainSceneController">
    <children>
       <VBox fx:id="side_bar" maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="60.0" styleClass="side-bar" stylesheets="@design.css">
          <children>
@@ -55,7 +56,7 @@
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#expand_sidebar" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icon/Logo.png" />
+                              <Image url="@../../icon/Logo.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -79,7 +80,7 @@
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../icon/Draw_Bold.png" />
+                                    <Image url="@../../icon/Draw_Bold.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -101,7 +102,7 @@
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../icon/Open_Bold.png" />
+                                    <Image url="@../../icon/Open_Bold.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -123,7 +124,7 @@
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../icon/Information.png" />
+                                    <Image url="@../../icon/Information.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -147,7 +148,7 @@
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../icon/Settings_Bold.png" />
+                              <Image url="@../../icon/Settings_Bold.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -195,7 +196,7 @@
                            <children>
                               <ImageView fitHeight="124.0" fitWidth="79.0" layoutX="51.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../icon/Draw_Light.png" />
+                                    <Image url="@../../icon/Draw_Light.png" />
                                  </image>
                               </ImageView>
                               <Label layoutX="15.0" layoutY="127.0" text="Draw new Graph" textAlignment="CENTER" textFill="WHITE">
@@ -226,7 +227,7 @@
                            <children>
                               <ImageView fitHeight="124.0" fitWidth="79.0" layoutX="51.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../icon/Open_Light.png" />
+                                    <Image url="@../../icon/Open_Light.png" />
                                  </image>
                               </ImageView>
                               <Label layoutX="22.0" layoutY="130.0" text="Open from File" textAlignment="CENTER" textFill="WHITE">
@@ -254,7 +255,7 @@
                            <children>
                               <ImageView fitHeight="124.0" fitWidth="79.0" layoutX="51.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../icon/Lucky_Light.png" />
+                                    <Image url="@../../icon/Lucky_Light.png" />
                                  </image>
                               </ImageView>
                               <Label layoutX="14.0" layoutY="133.0" text="I'm Feeling Lucky" textAlignment="CENTER" textFill="WHITE">
